@@ -1,0 +1,9 @@
+{
+  "versions": {
+      "analyticsCenterVersion": "prod"
+  },
+  "logs": {
+    "level": "info",
+    "adjustmentFilePath": "/tmp/adjustment.json"
+  }
+}

@@ -1,0 +1,82 @@
+// Global custom styles
+
+// global text color
+body .theme--light.v-application {
+  color: var(--theme-secondary-text);
+}
+
+// Tag colors
+.tag-red {
+  background-color: #E74E4E;
+}
+.tag-orange {
+  background-color: #E46C0B;
+}
+.tag-yellow {
+  background-color: #FBAF5D;
+}
+.tag-green {
+  background-color: #00A79D;
+}
+.tag-blue {
+  background-color: #558ED5;
+}
+.tag-violet {
+  background-color: #410E77;
+}
+.tag-purple {
+  background-color: #B02578;
+}
+.tag-pink {
+  background-color: #FB4FC9;
+}
+.tag-none {
+  background-color: var(--theme-support);
+}
+
+// Small labels used across the app
+.opex-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--theme-secondary-text);
+  text-transform: uppercase;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+//Local field container with static data
+.static_info {
+  .label {
+    margin-bottom: 0;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--theme-secondary);
+  }
+  h4 {
+    font-size: 1rem;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+  }
+}
+
+// Close icon button used across the app
+i.icon-close.close-icon-btn {
+  padding: 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--theme-secondary);
+  background-color: var(--theme-background-grey);
+  border-radius: 0.1rem;
+  cursor: pointer;
+}

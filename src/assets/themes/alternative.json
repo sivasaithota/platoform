@@ -1,0 +1,22 @@
+{
+  "primary": "#3A4E5B",
+  "secondary": "#01A2A6",
+  "primary-rgb": "58,78,91",
+  "secondary-rgb": "1,162,166",
+  "support": "#aaa",
+  "primary-text": "#fff",
+  "primary-text-rgb": "255, 255, 255",
+  "secondary-text": "#FFF",
+  "text": "#33475B",
+  "background": "#F4F5F7",
+  "background-light": "#FFF",
+  "error": "#CF6766",
+  "warning": "#F5A623",
+  "warning-rgb": "245,166,35",
+  "info": "#33475B",
+  "success": "#1AB571",
+  "border": "rgba(7, 71, 166, 0.4)",
+  "border-light": "rgba(7, 71, 166, 0.2)",
+  "secondary-border": "rgba(1, 162, 166, 0.5)",
+  "secondary-background": "rgba(1, 162, 166, 0.03)"
+}

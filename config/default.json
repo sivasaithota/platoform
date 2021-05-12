@@ -1,0 +1,156 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "prodProxyTarget": "https://qa.opexanalytics.com",
+    "devProxyTarget": "http://enframe:8000"
+  },
+  "database": {
+    "mongo": {
+      "host": "log-store",
+      "port": "27017",
+      "dbname": "enframe",
+      "username": "opexAdmin",
+      "password": "0b3Xabm!uPassm0rb",
+      "connectTimeoutMS": 30000,
+      "socketTimeoutMS": 30000,
+      "useUnifiedTopology": true,
+      "validateOptions": true,
+      "minConnections": 0,
+      "maxConnections": 10,
+      "evictionRunIntervalMillis": 60000,
+      "idleTimeoutMillis": 180000,
+      "acquireTimeoutMillis": 30000,
+      "fifo": true,
+      "autostart": true
+    },
+    "postgres": {
+      "host": "platformStore",
+      "port": "5432",
+      "dbname": "postgres",
+      "username": "opexapp",
+      "password": "this&iswa%first1",
+      "connectTimeoutMS": 30000,
+      "socketTimeoutMS": 30000,
+      "useUnifiedTopology": true,
+      "validateOptions": true,
+      "minConnections": 0,
+      "maxConnections": 10,
+      "evictionRunIntervalMillis": 60000,
+      "idleTimeoutMillis": 180000,
+      "acquireTimeoutMillis": 30000,
+      "fifo": true,
+      "autostart": true
+    }
+  },
+  "logging": {
+    "level": "info",
+    "adjustmentFilePath": "/tmp/adjustment.json"
+  },
+  "crypto": {
+    "encryptionAlgorithm": "aes-256-cbc",
+    "encoding": {
+      "text": "utf-8",
+      "cipher": "hex"
+    },
+    "secretKeys": {
+      "password": "2aDA4];jHpRD4H7BF3Kx#7$OUvl/j%%tNvIW*[o@Z.q^JT?7e<g&X^|%g?mRO"
+    }
+  },
+  "rabbitmq": {
+    "username": "opexadmin",
+    "password": "T2eD8HnOz07",
+    "host": "rabbitmq",
+    "port": "5672",
+    "reConnectTimeout": 3000,
+    "exchangeType": "direct",
+    "exchangeName": "enframe",
+    "queueName": "enframe",
+    "workerCount": 10,
+    "aditionalQueues": {
+      "docker": {
+        "exchangeName": "docker",
+        "queueName": "docker"
+      }
+    }
+  },
+  "socket": {
+    "hostname": "socket_shaft",
+    "port": 8000,
+    "path": "/socketIO",
+    "reconnection": true,
+    "reconnectionDelay": 3000,
+    "reconnectionDelayMax": 6000,
+    "reconnectionAttempts": "Infinity"
+  },
+  "jobprocessor": {
+    "server": "http://job_processor:8000",
+    "path": "/api/v1",
+    "api": {
+      "deployShiny": "/executions/shiny",
+      "getLogs": "/executions/logs"
+    }
+  },
+  "tableau": {
+    "api": {
+      "base": "/api/3.0",
+      "signIn": "/auth/signin"
+    }
+  },
+  "workflow": {
+    "apiBaseUrl": "http://workflow_api",
+    "appBasePath": "/analytics_center",
+    "scriptUploadDir": "/ds",
+    "appConfigPath": "/ApplicationConfig.json",
+    "dockerNetwork": "platform"
+  },
+  "connector": {
+    "server": "http://enframe_connector:8000",
+    "path": "/api/v1"
+  },
+  "macros": {
+    "ticdat": {
+      "workspace": "/macros/ticdat/workspace"
+    },
+    "scan": {
+      "workspace": "/macros/scan/workspace"
+    },
+    "xlsx": {
+      "workspace": "/macros/xlsxconverter/workspace"
+    }
+  },
+  "versions": {
+    "analyticsCenterVersion": "prod"
+  },
+  "keycloak": {
+    "realm": "enframe",
+    "bearer-only": true,
+    "auth-server-url": "http://keycloak/auth",
+    "ssl-required": "external",
+    "credentials": {
+      "grantType": "client_credentials",
+      "clientId": "enframe_backend",
+      "clientSecret": "76ccfa52-1ee4-4f16-9cfb-92101ccdbc9b",
+      "secret": "76ccfa52-1ee4-4f16-9cfb-92101ccdbc9b"
+    },
+    "resource": "enframe_backend",
+    "logoutUrl": "/auth/realms/enframe/protocol/openid-connect/logout",  
+    "serviceAccount": {
+      "url": "http://keycloak/auth/realms/enframe/protocol/openid-connect/token",
+      "grant_type": "client_credentials",
+      "client_id": "enframe_backend",
+      "client_secret": "76ccfa52-1ee4-4f16-9cfb-92101ccdbc9b",
+      "scope": "offline_access"
+    },
+    "permission": {
+      "clients": "http://keycloak/auth/admin/realms/enframe/clients/",
+      "getScope": "/authz/resource-server/scope",
+      "scopes": ["create", "read", "update", "delete"],
+      "resource": "http://keycloak/auth/realms/enframe/authz/protection/resource_set/",
+      "ticket": "http://keycloak/auth/realms/enframe/authz/protection/permission/ticket"
+    }
+  },
+  "environments": {
+    "localDockerRegistry": "192.168.1.101:5000"
+  }
+}

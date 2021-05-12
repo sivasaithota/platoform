@@ -1,0 +1,416 @@
+// Rewriting Vuetify styles not represented by the variables
+
+html#root {
+  height: 100%;
+  font-size: 16px;
+  overflow: auto;
+
+  /* max-width is equivalently 1399px*/
+  @media only screen and (max-width: 89.938em) {
+    /* 0.69em is equivalently 11px */
+    font-size: 0.69em
+  }
+
+  /* min-width 1440px is equivalently and max-width is equivalently 1599px*/
+  @media (min-width: 90em) and (max-width: 99.938em) {
+    /* 0.75em is equivalently 12px */
+    font-size: 0.75em
+  }
+
+  /* min-width 1600px is equivalently and max-width is equivalently 1799px*/
+  @media (min-width: 100em) and (max-width: 112.438em) {
+    /* 0.81em is equivalently 13px */
+    font-size: 0.813em
+  }
+
+  /* min-width 1800px is equivalently and max-width is equivalently 1920px*/
+  @media (min-width: 112.5em) and (max-width: 120em) {
+    /* 0.875em is equivalently 14px */
+    font-size: 0.875em
+  }
+}
+
+body {
+  font-weight: 300;
+}
+
+// Buttons
+button.v-btn[type="button"] {
+  margin: 0.4rem 0.5rem;
+
+  &.v-btn--fab {
+    &.v-size--small {
+      width: 1.5rem;
+      height: 1.5rem;
+
+      i {
+        font-size: 1rem;
+      }
+    }
+
+    &.v-size--default {
+      width: 2.2rem;
+      height: 2.2rem;
+
+      i {
+        font-size: 1.4rem;
+      }
+    }
+
+    &.v-size--large {
+      width: 3rem;
+      height: 3rem;
+
+      i {
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  &:not(.v-btn--fab) {
+    min-width: 6rem;
+    height: auto;
+
+    &.v-size--small {
+      padding: 0.4rem 0.8rem;
+      line-height: 1.2rem;
+    }
+    &.v-size--default {
+      padding: 0.5rem 1rem;
+      line-height: 1.5rem;
+    }
+    &.v-size--large {
+      padding: 0.6rem 1.2rem;
+      line-height: 1.8rem;
+    }
+
+    .v-btn__content {
+      line-height: inherit;
+    }
+  }
+
+  &.v-btn--disabled {
+    box-shadow: none;
+  }
+
+  &:not(.v-btn--text):not(.v-btn--depressed):not(.v-btn--disabled) {
+    box-shadow: 0 0.15rem 0.05rem -0.1rem rgba(0,0,0,0.2),
+      0 0.1rem 0.1rem 0 rgba(0,0,0,0.14),
+      0 0.05rem 0.3rem 0 rgba(0,0,0,0.12);
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+}
+
+// Rewriting Vuetify styles not represented by the variables
+
+// Input field and textarea
+.opex-input div.v-input.v-text-field,
+div.v-input.v-text-field.v-select.v-autocomplete,
+.v-input.v-text-field.opex-password-input {
+  margin: 0;
+  padding: 1rem 0 0.4rem;
+  position: relative;
+
+  div.v-input__prepend-inner {
+    margin: 0;
+    padding: 0 0 0 0.6rem;
+    align-self: center;
+  }
+
+  div.v-input__append-inner {
+    align-self: center;
+    margin: 0 0.3rem 0 0;
+    padding-left: 0;
+
+    i.v-icon {
+      color: var(--theme-text);
+
+      &:before {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  &.v-textarea .v-input__append-inner {
+    align-self: flex-end;
+    padding-bottom: 0.3rem;
+  }
+
+  &.v-input--is-focused .v-input__slot,
+  &.input-controls.input-controls-editing .v-input__slot {
+    border-color: var(--theme-secondary);
+    background-color: var(--theme-background-light);
+  }
+
+  &.error--text .v-input__control div.v-input__slot {
+    border-color: var(--theme-error);
+  }
+
+  .v-input__slot {
+    position: relative;
+    margin-bottom: 0.2rem;
+    border: 1px solid;
+    border-color: var(--theme-border);
+    background-color: var(--theme-background);
+    transition: all 0.3s;
+
+    &:before, &:after {
+      display: none;
+    }
+  }
+
+  div.v-text-field__slot, div.v-select__slot {
+    position: static;
+
+    .v-label {
+      top: 0.1rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: var(--theme-secondary);
+    }
+
+    input, textarea {
+      padding: 1.2rem 0.8rem;
+      line-height: 1;
+      font-size: 1rem;
+      color: var(--theme-text);
+
+      &::placeholder {
+        color: var(--theme-support);
+      }
+    }
+
+    textarea {
+      padding: 0.8rem;
+      resize: none;
+      line-height: 1.5;
+    }
+  }
+
+  .v-counter {
+    font-size: 0.7rem;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--theme-text);
+    opacity: 0.4;
+  }
+
+  .v-messages {
+    min-height: 0.9rem;
+  }
+
+  .v-messages__message {
+    font-size: 0.7rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  .v-input__prepend-outer {
+    margin: 0;
+  }
+}
+
+// Select icon
+.v-select {
+  i.v-icon:before {
+    transform: rotate(90deg);
+    font-size: 1rem;
+  }
+}
+
+// Autocomplete drop-down
+div.v-autocomplete__content.v-menu__content {
+  border: 1px solid rgba(7, 71, 166, 0.25);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.2rem 0.8rem -0.4rem rgba(0, 0, 0, 0.5);
+
+  &.custom_menu .v-subheader {
+    padding: .36rem .5rem 0;
+    height: auto;
+    text-transform: uppercase;
+  }
+
+  .v-list {
+    padding: 0.3rem 0;
+  }
+
+  .v-list-item {
+    min-height: 2rem;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+
+    .v-list-item__content {
+      padding: 0;
+    }
+
+    .v-list-item__title {
+      height: 2rem;
+      line-height: 2rem;
+    }
+  }
+
+  span.v-list-item__mask {
+    background: transparent;
+    color: var(--theme-secondary);
+    font-weight: 700;
+  }
+}
+
+// Radio group and radio button
+div.v-input.v-input--radio-group {
+  margin-top: 0;
+
+  .v-input__control {
+    width: 100%;
+  }
+
+  div.v-input__slot {
+    margin-bottom: 0.2rem;
+
+    div.v-radio {
+      margin: 0 0 0.6rem;
+
+      .v-input--selection-controls__input {
+        margin-right: 0.4rem;
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+
+      .v-icon {
+        font-size: 1.2rem;
+        color: var(--theme-text);
+      }
+
+      .v-label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--theme-text);
+      }
+    }
+  }
+}
+
+// Update styles for checkboxes on Parameters page
+$checkbox-size: 1rem;
+$indent-size: 0.7rem;
+.v-input--selection-controls.v-input--checkbox {
+  margin: 0;
+  padding: 0;
+  .v-input__slot {
+    margin: 0;
+  }
+  .v-input--selection-controls__input {
+    width: $checkbox-size;
+    height: $checkbox-size;
+    margin-right: 0;
+  }
+  .v-input--selection-controls__ripple {
+    height: $checkbox-size + $indent-size;
+    width: $checkbox-size + $indent-size;
+    top: calc(50% - #{$checkbox-size} - #{$indent-size}/2);
+  }
+  .v-icon {
+    font-size: $checkbox-size;
+  }
+  .v-messages {
+    display: none;
+  }
+}
+.v-list__tile__action {
+  min-width: $checkbox-size + $indent-size;
+}
+
+// Chips container inside autocomplete box
+.v-select.v-select--chips .v-select__selections {
+  min-height: auto;
+}
+
+// Date picker
+.v-picker.v-picker--date {
+  background-color: #0d47a1;
+  .v-icon.icon {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .v-date-picker-header button.v-btn[type=button] {
+    box-shadow: none;
+    min-width: auto;
+    width: auto;
+    padding: 0;
+  }
+
+  .v-date-picker-table {
+    height: 100%;
+    padding: 0 0.8rem 1rem;
+  }
+
+  .v-picker__actions {
+    padding: 1rem;
+  }
+
+  .v-date-picker-table--month .v-btn {
+    height: 100%;
+  }
+
+  table {
+    border-collapse: collapse;
+
+    td {
+      border: 1px solid #e5e5e5;
+
+      button.v-btn[type=button]:not(.v-btn--fab) {
+        border-radius: 0;
+        margin: 0;
+        min-width: 100%;
+        height: 2.5rem;
+        box-shadow: none;
+
+        &:before {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+// Skeleton loaders
+div.v-skeleton-loader.v-skeleton-loader--is-loading {
+  &>div.v-skeleton-loader__bone {
+    background: transparent;
+  }
+}
+
+.v-skeleton-loader.card-skeleton {
+  width: 100%;
+
+  &>.v-skeleton-loader__bone {
+    height: auto;
+
+    .v-skeleton-loader__text:nth-child(1) {
+      max-width: 60%;
+      margin-bottom: 0.5rem;
+      background: var(--theme-secondary);
+      opacity: .08;
+    }
+
+    .v-skeleton-loader__text:nth-child(2) {
+      max-width: 100%;
+      background: var(--theme-secondary);
+      opacity: .16;
+    }
+  }
+
+  &.card-skeleton-darkened {
+    .v-skeleton-loader__text:nth-child(1) {
+      margin-bottom: 0.8rem;
+      background: var(--theme-primary);
+      opacity: .2;
+    }
+  }
+}

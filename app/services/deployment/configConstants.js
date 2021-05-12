@@ -1,0 +1,45 @@
+module.exports = {
+  applicationConfigTemplate: {
+    Application_id: '',
+    ApplicationName: '',
+    ApplicationDisplayName: '',
+    ApplicationDescription: '',
+    appUrl: '',
+    theme: {
+      image: {
+        link: 'default-theme-2.png',
+        name: 'Default Theme',
+      },
+      color: {
+        mainColor: '#263A4C',
+        extraColor: '#00AB4E',
+        complimetaryColor: '#FFC300',
+        themeName: 'Default Theme',
+      },
+    },
+    tables: {},
+    parameters: [],
+    parameterOptions: [],
+    editOptions: {},
+    templateDefinitions: {},
+    tableau: {},
+    powerbi: {},
+    scriptFileList: [],
+    script: '',
+    commandToExecute: '',
+    view: {},
+    database: {},
+    reports: {},
+    userInfo: {
+      user: {
+        username: 'Administrator',
+      },
+    },
+    html: false,
+    htmlType: 'off',
+    appSegments: [],
+    macros: [],
+    inputMacroStatus: 'off',
+    outputMacroStatus: 'off',
+  },
+};

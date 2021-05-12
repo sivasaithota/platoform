@@ -1,0 +1,17 @@
+version: '3'
+services:
+  enframe:
+    image: opexanalytics/centos-node:10.9.0
+    volumes:
+      - ".:/src"
+      - "/home/opex_workarea/docker_workarea/docker_volumes/common_store/analytics_center:/analytics_center"
+      - "/home/opex_workarea/docker_workarea/docker_volumes/enframe_macros:/macros"
+    networks:
+      - platform
+    ports:
+      - 8000
+    working_dir: /src
+    command: npm run start
+networks:
+  platform:
+    external: true

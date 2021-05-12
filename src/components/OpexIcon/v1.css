@@ -1,0 +1,117 @@
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: OpexIcon, sans-serif !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-input-data:before {
+    content: "\e900";
+}
+.icon-output-data:before {
+    content: "\e901";
+}
+.icon-parameters:before {
+    content: "\e902";
+}
+.icon-actions:before {
+    content: "\e903";
+}
+.icon-visualization:before {
+    content: "\e904";
+}
+.icon-workflows:before {
+    content: "\e905";
+}
+.icon-canvas:before {
+    content: "\e906";
+}
+.icon-deployment-options:before {
+    content: "\e907";
+}
+.icon-config-upload:before {
+    content: "\e908";
+}
+.icon-platform-admin:before {
+    content: "\e909";
+}
+.icon-app-users:before {
+    content: "\e90a";
+}
+.icon-app-deploy:before {
+    content: "\e90b";
+}
+.icon-home-page:before {
+    content: "\e90c";
+}
+.icon-alerts:before {
+    content: "\e90d";
+}
+.icon-platform-settings:before {
+    content: "\e90e";
+}
+.icon-profile-page:before {
+    content: "\e90f";
+}
+.icon-log-off:before {
+    content: "\e910";
+}
+.icon-information:before {
+    content: "\e911";
+}
+.icon-close:before {
+    content: "\e912";
+}
+.icon-delete:before {
+    content: "\e913";
+}
+.icon-app-info:before {
+    content: "\e914";
+}
+.icon-edit:before {
+    content: "\e915";
+}
+.icon-delete-fill:before {
+    content: "\e916";
+}
+.icon-radio-checked:before {
+    content: "\e917";
+}
+.icon-checkbox-checked:before {
+    content: "\e918";
+}
+.icon-text-box:before {
+    content: "\e919";
+}
+.icon-calendar:before {
+    content: "\e91a";
+}
+.icon-switch:before {
+    content: "\e91b";
+}
+.icon-range-slider:before {
+    content: "\e91c";
+}
+.icon-drop-down:before {
+    content: "\e91d";
+}
+.icon-dropdown-multiselect:before {
+    content: "\e91e";
+}
+.icon-success-fill:before {
+    content: "\e91f";
+}
+.icon-info-fill:before {
+    content: "\e920";
+}
+.icon-success:before {
+    content: "\e921";
+}

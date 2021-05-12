@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="44px" viewBox="0 0 33 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/fill-icons/excel</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Upload-Options/Upload-Folder-Files" transform="translate(-62.000000, -28.000000)">
+            <g id="icons/fill-icons/excel" transform="translate(62.000000, 28.000000)">
+                <g id="Group-13">
+                    <path d="M2.13002664,0.388424622 L21.5329508,0.388424622 C22.0356378,0.388424622 22.5198908,0.577722091 22.8893129,0.918634859 L32.3378124,9.63796776 C32.7480968,10.0165894 32.9814503,10.5494676 32.9814503,11.1077575 L32.9814503,41.3384254 C32.9814503,42.4429949 32.0860198,43.3384254 30.9814503,43.3384254 L2.97510843,43.3384254 C1.87053893,43.3384254 0.975108427,42.4429949 0.975108427,41.3384254 C0.975108427,41.3358401 0.97511344,41.3332548 0.975123466,41.3306695 L1.13003416,1.38454666 C1.13217003,0.833779887 1.57925572,0.388424622 2.13002664,0.388424622 Z" id="Path-14" fill="#1AB571"></path>
+                    <polygon id="Path-20" fill-opacity="0.262935915" fill="#FFFFFF" points="21.8103448 2 30.7327586 11 21.8103448 11"></polygon>
+                    <g id="Group-12" transform="translate(9.913793, 19.000000)" stroke="#FFFFFF">
+                        <rect id="Rectangle-14" x="0.5" y="0.5" width="13.8706897" height="14" rx="2"></rect>
+                        <path d="M5.03791373,0.512544949 L5.03791373,14.646387" id="Path-21"></path>
+                        <path d="M9.49912063,0.512544949 L9.49912063,14.646387" id="Path-21"></path>
+                        <path d="M0.217488686,5.48994303 L14.4692111,5.48994303" id="Path-22"></path>
+                        <path d="M0.217488686,9.98994303 L14.4692111,9.98994303" id="Path-22"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

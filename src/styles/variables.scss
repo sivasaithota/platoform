@@ -1,0 +1,35 @@
+// Rewriting Vuetify variables
+$body-font-family: 'OpenSans', serif;
+
+$btn-border-radius: 3px;
+$btn-font-weight: bold;
+$btn-letter-spacing: normal;
+
+$btn-font-sizes: (
+  'small': 0.8rem,
+  'default': 1rem,
+  'large': 1.2rem
+);
+
+// Global sizes
+$sidebar-width: 18.5rem;
+$header-height: 3.8rem;
+$sidebar-padding: 1.3rem;
+$separator-opacity: 0.1;
+$light-border-color: #e8e9eb;
+
+//Parameters
+$parameter-border-color: rgba(var(--theme-primary-rgb), .1);
+$drawer-indent: 1rem;
+$drawer-width: 25.8rem;
+
+// Skeleton loaders
+$skeleton-loader-item-padding: 0 1rem;
+$skeleton-loader-item-two-line-height: 5rem;
+$skeleton-loader-text-border-radius: .6rem;
+$skeleton-loader-text-height: 1rem;
+$skeleton-loader-heading-border-radius: 1rem;
+$skeleton-loader-heading-height: 2rem;
+$skeleton-loader-item-avatar-height: 2.6rem;
+$skeleton-loader-item-avatar-width: 2.6rem;
+$skeleton-loader-item-avatar-margin: 1rem;

@@ -1,0 +1,95 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "prodProxyTarget": "https://qa.opexanalytics.com",
+    "devProxyTarget": "http://localhost"
+  },
+  "database": {
+    "mongo": {
+      "host": "log-store",
+      "port": "27017",
+      "dbname": "enframe",
+      "username": "opexAdmin",
+      "password": "0b3Xabm!uPassm0rb",
+      "connectTimeoutMS": 30000,
+      "socketTimeoutMS": 30000,
+      "autoReconnect": true,
+      "validateOptions": true,
+      "minConnections": 0,
+      "maxConnections": 10,
+      "evictionRunIntervalMillis": 60000,
+      "idleTimeoutMillis": 180000,
+      "acquireTimeoutMillis": 30000,
+      "fifo": true,
+      "autostart": true
+    },
+    "postgres": {
+      "host": "platformStore",
+      "port": "5432",
+      "username": "opexapp",
+      "password": "this&iswa%first1",
+      "connectTimeoutMS": 30000,
+      "socketTimeoutMS": 30000,
+      "autoReconnect": true,
+      "validateOptions": true,
+      "minConnections": 0,
+      "maxConnections": 10,
+      "evictionRunIntervalMillis": 60000,
+      "idleTimeoutMillis": 180000,
+      "acquireTimeoutMillis": 30000,
+      "fifo": true,
+      "autostart": true
+    }
+  },
+  "logging": {
+    "level": "debug"
+  },
+  "crypto": {
+    "encryptionAlgorithm": "aes-256-cbc",
+    "encoding": {
+      "text": "utf-8",
+      "cipher": "hex"
+    },
+    "secretKeys": {
+      "password": "2aDA4];jHpRD4H7BF3Kx#7$OUvl/j%%tNvIW*[o@Z.q^JT?7e<g&X^|%g?mRO"
+    }
+  },
+  "userManagement": {
+    "acceptedDomains": ["opexanalytics.com"]
+  },
+  "rabbitmq": {
+    "username": "opexadmin",
+    "password": "T2eD8HnOz07",
+    "host": "rabbitmq",
+    "port": "5672",
+    "reConnectTimeout": 3000,
+    "exchangeType":"direct",
+    "exchangeName": "enframe",
+    "queueName": "enframe",
+    "workerCount": 10
+  },
+  "keycloak": {
+    "url": "/auth",
+    "realm": "enframe",
+    "clientId": "enframe_frontend",
+    "onLoad": "login-required",
+    "logoutUrl": "/auth/realms/enframe/protocol/openid-connect/logout"
+  },
+  "socket": {
+    "hostname": "socket_shaft",
+    "port": 8000,
+    "path": "/socketIO",
+    "reconnection": true,
+    "reconnectionDelay": 3000,
+    "reconnectionDelayMax": 6000,
+    "reconnectionAttempts": "Infinity"
+  },
+  "jobprocessor": {
+    "server" : "http://job_processor:8000",
+    "path": "/api"
+  },
+  "versions": {
+    "analyticsCenterVersion": "19.10.24.03"
+  }
+}

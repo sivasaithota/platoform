@@ -1,0 +1,41 @@
+version: '2'
+services:
+  build:
+    image: opexanalytics/centos-node:10.9.0
+    volumes:
+      - ".:/src"
+    working_dir: /src
+    command: npm run build
+  install:
+    image: opexanalytics/centos-node:10.9.0
+    volumes:
+      - ".:/src"
+    working_dir: /src
+    command: npm install
+  preprocessor:
+    image: opexanalytics/centos-node:10.9.0
+    volumes:
+      - ".:/src"
+    networks:
+      - "platform"
+    working_dir: /src
+    command: npm run preprocessor
+  migrate:
+    image: opexanalytics/centos-node:10.9.0
+    volumes:
+      - ".:/src"
+    networks:
+      - "platform"
+    working_dir: /src
+    command: npm run prestart
+  test:
+    image: opexanalytics/centos-node:10.9.0
+    volumes:
+      - ".:/src"
+    networks:
+      - "platform"
+    working_dir: /src
+    command: npm run unit-test
+networks:
+  platform:
+    external: true

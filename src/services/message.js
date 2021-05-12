@@ -1,0 +1,452 @@
+// Service with text messages used across the app
+
+import Vue from 'vue';
+
+// Injecting this module as a dependency to the Vue instance, so in the Vue components it can be used as $message
+Vue.mixin({
+  beforeCreate() {
+    const options = this.$options;
+    if (options.message) this.$message = options.message;
+    else if (options.parent && options.parent.$message) this.$message = options.parent.$message;
+  },
+});
+
+const appName = 'OpenX';
+
+export default {
+  common: {
+    mandatoryField: 'Mandatory field',
+    fileSizeRestriction: 'File size exceeds the limit',
+    tableFileSizeRestriction: `File size exceeds the limit of 20MB.
+      Please upload a smaller version of the file.
+      The file with complete data can be uploaded in the app after deployment`,
+    errorFetchingData: 'Error fetching application data',
+    errorSavingData: 'Error saving application data',
+    errorUploadingFile: 'Error uploading file',
+    errorUploadingFolder: 'Error uploading folder',
+    errorDeletingFile: 'Error deleting file',
+    unacceptableFile: 'Unacceptable file uploaded. Please upload a different file.',
+    passwordMinLength: 'Minimum 8 characters',
+    passwordLowercaseLetter: 'Minimum 1 mandatory lowercase letter',
+    passwordUppercaseLetter: 'Minimum 1 mandatory uppercase letter',
+    passwordSpecialLetter: 'Minimum 1 mandatory special character',
+    passwordNumericLetter: 'Minimum 1 mandatory numeric character',
+    passwordAllRules: 'Set a password that meets all the requirements',
+    contactAdmin: 'Please try again. Contact Administrator if the issue persists',
+    errorDownloadingLogs: 'Error downloading logs',
+    singleQuoteRule: 'Value cannot contain single quote',
+    minRule: (min) => `min ${min}`,
+    minMaxRule: (min, max) => `min ${min}, max ${max}`,
+    deleteItem: (item) => `Are you sure you want to delete the ${item}?`,
+    dataSaved: 'Application data is saved successfully',
+    errorClipboard: 'Error copying to clipboard',
+    errorFetchingEnframeInfo: 'Error fetching Enframe info',
+    errorFetchingScenarios: 'Error fetching app scenarios',
+    userNotExist: 'Username does not exist. You are being logged out.',
+    logIntoApp: 'Unable to fetch app data since you are not in the list of app users. Please log in to the app first',
+    immediateUpdate: 'Updates made here will be saved and reflected immediately in the application',
+  },
+
+  auth: {
+    authError: 'Authorization failed',
+    userInfoError: 'Error fetching user info',
+    refreshTokenError: 'Error refreshing token',
+  },
+
+  createNewApp: {
+    appNameAllowedCharacters: 'Application name can be alphanumeric with hyphen and space',
+    appNameTooLong: 'Application name too long',
+    appNameExists: 'Application name already exists',
+    errorCheckingUniqueness: 'Error checking app name uniqueness',
+    unknownConfig: 'Unknown config file',
+    errorReadingConfig: 'Error reading config file',
+    errorCreatingApp: 'Error creating application',
+    appCreatedSuccessfully: 'Files uploaded successfully',
+    configFormat: 'Config files in .json format',
+    scriptsFormat: 'Scripts in .py or other formats',
+    fileExtensionRestriction: (extension, type) => `Only ${extension} files are allowed as ${type} files`,
+    missingInputData: 'Input files or Input config file are not found. Please upload relevant files.',
+    filesFormat: (type) => `${type} data in csv, xls, xlsx format`,
+    urlUnique: 'Application URL already exists.',
+    urlValidation: 'Application URL can be alphanumeric and can have underscore and hyphen.',
+    datatypeValidationDescription: 'Action made on this affects only inputs/outputs',
+    datatypeValidationLabel: 'Automatic data type detection',
+    header: 'How are you building your App?',
+    ticdatFileDescription: 'Ticdat script file',
+    ticdatExtensionError: 'Ticdat file can be only of .py or .zip extension',
+    titleNormalizationLabel: 'Automatic title normalization',
+    titleNormalizationDescription: 'Case corrects title labels & eliminates underscores for legibility',
+    duplicateScriptNames: 'The folder contains two or more files with the same name. Please rename one of the files and try again',
+  },
+
+  appDetails: {
+    errorFetchingScopes: 'Error fetching application scopes',
+    noDescription: 'Yet to be added',
+    nameDescription: 'This is unique and is displayed on the app home page to identify apps',
+    displayNameDescription: 'This need not be unique and is shown on the deployed application',
+    descriptionDescription: 'This is a short description of the app and will be displayed on the app info tile on the home page',
+  },
+
+  inputOutput: {
+    errorFetchingTables: 'Error fetching tables',
+    errorFetchingColumns: 'Error fetching table columns',
+    errorFetchingTags: 'Error fetching tables tags',
+    errorFetchingDataTypes: 'Error fetching data types',
+    errorCreatingTable: 'Error creating table',
+    errorUpdatingTable: 'Error updating table',
+    errorMovingTable: 'Error moving table(s)',
+    errorDeletingTable: 'Error deleting table',
+    errorCreatingColumn: 'Error creating column',
+    errorUpdatingColumn: 'Error updating column',
+    errorDeletingColumn: 'Error deleting column',
+    errorMovingColumn: 'Error moving column',
+    tableNameUniqueness: 'Table name is already in use',
+    columnNameUniqueness: 'Column name is already in use',
+    columnNameSymbols: 'Column name cannot contain comma, quotes, double quotes or ampersand',
+    filtersCountRestriction: 'Max 3 columns are allowed for the Quick Filter',
+    errorUploadingTable: 'Error uploading table',
+    deleteTable: (tableName) => `Are you sure you want to delete the ${tableName} table?`,
+    deleteColumn: (columnName) => `Are you sure you want to delete the ${columnName} column?`,
+    editableColumn: 'Make this column editable in the app',
+    quickFilter: 'Enable quick filter for this column. This can be enabled for a max of 3 columns',
+    columnVisibility: 'Show/Hide this column in the app',
+    tableVisibility: 'Show/Hide this table in the app',
+    precisionTooltip: 'Precision is the number of significant digits allowed in the column',
+    scaleTooltip: 'Scale is the number of digits allowed to the right or left of the decimal point',
+    visibilityTooltip: 'Visibility',
+    editableTooltip: 'Editable',
+    quickFilterTooltip: 'Quick Filter',
+    filterLimitErrorMessage: 'Only 3 quick filters can be shown. Please unselect one filter to proceed',
+  },
+
+  actionSettings: {
+    primaryActionCardTitle: 'Main execution',
+    primaryActionCardSubtitle: 'Selected script will be the main execution in the application',
+    trigger: 'Action trigger',
+    triggerDescription: 'An action can be initiated with a trigger point',
+    clickToUpdate: 'Click to update',
+    scenarioSpecific: 'Files specific to the scenario the action is executed in',
+    scriptUploaded: 'Script file is successfully uploaded',
+    deleteAction: 'Are you sure you want to delete this action?',
+    errorDeletingScript: 'Error deleting script file',
+    successDeletingScript: 'Script file deleted successfully',
+    errorDeletingActionScript: 'Unable to delete a script used for the action',
+    primaryActionNotDefined: 'Primary Action script and command to execute are not defined',
+    workflowsActiveApps: 'Workflows can be enabled and edited only for the active apps',
+    gettingActionsError: 'Getting Primary Actions error',
+    gettingCommandsError: 'Getting command list error',
+    gettingScriptsError: 'Getting script list error',
+    savingActionError: 'Error saving action data',
+    errorFetchingActions: 'Error fetching app actions',
+    errorDeletingAction: 'Error deleting action',
+    errorMovingAction: 'Error moving action',
+    errorGettingTrigger: 'Error getting triggers',
+    errorSettingTrigger: 'Error setting trigger',
+    successCreatingAction: 'Action is created successfully',
+    successUpdatingAction: 'Action is updated successfully',
+    successDeletingAction: 'Action is deleted successfully',
+    successUpdatingTrigger: 'Action trigger was updated successfully',
+    replaceScript: (script) => `Are you sure you want to replace the ${script} script?`,
+    fileNameAllowedCharacters: 'Invalid file name. File name can be alphanumeric with hyphen and underscore',
+  },
+
+  schedules: {
+    errorFetching: 'Error fetching schedules data',
+    successCreating: 'Schedule is created successfully',
+    errorCreating: 'Error creating schedule',
+    successUpdating: 'Schedule is updated successfully',
+    errorUpdating: 'Error updating schedule data',
+    errorDeleting: 'Error deleting schedule',
+    errorChangingStatus: 'Error (de)activating schedule',
+    minDays: 'Select at least one day of the week',
+    minDate: 'Select at least one date',
+    timezoneTooltip: 'The Scheduler defaults to your computer\'s timezone',
+    appNotDeployedTitle: 'Application is not deployed yet',
+    appNotDeployedMessage: (item) => `A ${item} cannot be created before the application is deployed.
+    Please come back here after you’ve deployed this application to create a ${item}.`,
+    appNotDeployedLink: 'Take me to App Deployment',
+    activeApps: 'Schedules can be added and edited only for the active apps',
+    editScenarioHint: 'Click on the scenario to edit it',
+    dialogTitle: (action) => `Are you sure you want to ${action} this schedule?`,
+    deleteText: (scheduleName) => `You're about to delete the <b>"${scheduleName}"</b> schedule. Are you sure you want to proceed?`,
+    activateText: 'Activating the schedule will have it run its corresponding actions from its next time of occurrence.',
+    deactivateText: `Deactivating the schedule will <b>stop it running from next occurrence</b>.
+    Leave a comment to let others know why you’re taking this action.`,
+    deactivateReason: 'What\'s the reason? (Optional)',
+  },
+
+  userInfo: {
+    nameSymbols: 'User name can only have Alphanumeric characters, Dashes, Underscores, Apostrophes and Periods.',
+    nameMinMax: (min, max) => `User Name must be between ${min}-${max} characters.`,
+    emailSymbols: 'Please enter a valid email address.',
+    deleteUser: (userName) => `Are you sure you want to delete the ${userName} from the admin list?`,
+  },
+
+  visualization: {
+    errorFetchingVisualisation: 'Error fetching visualisation data',
+    errorCreatingReport: 'Error creating report',
+    errorUpdatingReport: 'Error updating report',
+    errorDeletingReport: 'Error deleting report',
+    invalidUrl: 'Invalid URL',
+    missingServerFile: 'Required file server.R is missing',
+    successDeployingShiny: 'Successfully deployed Shiny R app',
+    errorDeployingShiny: 'Error deploying Shiny R app',
+  },
+
+  applicationList: {
+    getAllAppsErrorTitle: 'Getting All Apps Error',
+    getScenarioListErrorTitle: 'Getting scenarios list error',
+    getTableauListErrorTitle: 'Getting tableau list error',
+    downloadAppErrorTitle: 'Download app error',
+    activeApps: 'Apps that are currently active and running',
+    inactiveApps: 'Apps that are currently inactive',
+    inProgressApps: 'Apps that are in the process of being deployed',
+    doubleClickMessage: 'Double click or press enter to edit app',
+  },
+
+  userList: {
+    addEditUserTitle: (actionType) => `${actionType} user`,
+    getUsersErrorTitle: 'Getting users list error',
+    getUsersCountErrorTitle: 'Getting users count error',
+    errorAddingUser: 'Error adding user',
+    errorDeletingUser: 'Error deleting user',
+    userAutocompleteLabelEdit: 'edit user',
+    userAutocompletePlaceholder: 'Search and add a new user',
+    rolesAutocompleteLabel: 'access type',
+    rolesAutocompletePlaceholder: 'Select an access type for this user',
+    deleteDialogText: 'Deleting will <b>permanently remove</b> the selected users from this application. '
+      + 'You can always recreate the users in the future.',
+    deleteUserTooltip: 'Delete user',
+    appNotDeployedMessage: `An user list is not available before the application is deployed.
+      Please come back here after you've deployed this application to manage users.`,
+  },
+
+  appDeployment: {
+    buttons: {
+      delete: {
+        listName: 'Delete',
+        listDescription: 'Permanently delete application files',
+        confirmation: 'Are you sure you want to delete this application?',
+        description: 'Deleting will <b>permanently remove</b> all the application files from the server.'
+          + ' You will not be able to restore the files after deleting the application.',
+        confirm: 'Yes, delete it',
+        cancel: 'Cancel',
+      },
+      stop: {
+        listName: 'Deactivate',
+        listDescription: 'App will be deactivated',
+        confirmation: 'Are you sure you want to deactivate this application?',
+        description: 'Deactivating will <b>stop the application from running</b>.'
+          + ' You will not be able to access the application. You can activate the application at any time.',
+        confirm: 'Yes, deactivate it',
+      },
+      start: {
+        listName: 'Activate',
+        listDescription: 'App will be activated',
+        confirmation: 'Are you sure you want to activate this application?',
+        description: 'Activating will start the application. You can also edit the app URL before activating the application.',
+        confirm: 'Yes, activate it',
+      },
+      upgrade: {
+        listName: 'Upgrade',
+        listDescription: 'Upgrade app to the latest version',
+        latestVersion: 'Latest version already deployed',
+        confirmation: 'Are you sure you want to upgrade this application?',
+        confirm: 'Yes, upgrade',
+      },
+      download: {
+        listName: 'Download',
+        listDescription: 'Downloads App in .zip format only',
+        confirmation: 'Download app',
+        confirm: 'Download',
+        inProgress: 'Preparing download…',
+        cancel: 'Operation canceled by the user.',
+      },
+      edit: {
+        tooltip: 'Edit app',
+      },
+    },
+    stages: {
+      deployment: {
+        title: 'App deployment error',
+        message: 'Error encountered during the deployment process',
+      },
+      publishReports: {
+        title: 'Report publishing failed',
+        message: 'App deployed successfully but report publishing has failed. Please upload the correct tableau reports or contact support',
+      },
+    },
+    deployTitleSuccess: 'Success',
+    deploySuccess: 'App deployed successfully',
+    deployTitleError: 'App deployment error',
+    deployProcessError: 'Error while deployment process',
+    startAppSuccess: 'App has been activated',
+    stopAppSuccess: 'App has been deactivated',
+    stopAppError: 'Error while stopping app',
+    deployAppErrorTitle: 'Running command error',
+    updateStatusTitle: 'Operation status',
+    updateStatusErrorTitle: 'Updating status error',
+    deleteAppTitle: 'App has been deleted',
+    deleteSuccess: (name) => `${name} successfully deleted`,
+    deleteAppErrorTitle: 'Deleting App Error',
+    upgradeAppTitle: 'App upgrade status',
+    upgradeAppErrorTitle: 'Upgrading app error',
+    upgradeSuccess: 'App has been upgraded',
+    upgradeApp: 'Please upgrade app before re-deploy',
+    startDeployment: 'Are you sure you want to continue?',
+    privacyApp: 'Enable to restrict access to yourself. Collaborate by inviting users from application\'s user settings.',
+    allSegmentsInvisibleErrorTitle: 'Error while changing visibility',
+    allSegmentsInvisibleErrorMessage: 'At least one segment should be visible',
+    deployDialogSubTitle: 'We’re deploying the application now. Please wait while it takes a few moments.',
+  },
+
+  emptyList: {
+    parameter: 'Get Started on Parameters <br> by Adding Component',
+    config: 'No configs available <br> add one now',
+  },
+
+  appSegmentsInfo: [
+    {
+      start: 'Select a',
+      subject: 'default tab',
+      end: 'to show first on the application',
+    },
+    {
+      start: 'You can edit the',
+      subject: 'tab name',
+      end: 'by clicking on the name',
+    },
+    {
+      start: 'You can',
+      subject: 'show / hide',
+      end: 'tabs by clicking the visible icon',
+    },
+  ],
+
+  parameters: {
+    gettingParametersError: 'Getting parameters list error',
+    creatingGroupError: 'Error creating parameter group',
+    updatingGroupError: 'Error updating parameter group',
+    movingGroupError: 'Error moving parameter group',
+    deletingGroupError: 'Error deleting parameter group',
+    creatingParameterError: 'Error creating parameter',
+    updatingParameterError: 'Error updating parameter',
+    deletingParameterError: 'Error deleting parameter',
+    movingParameterError: 'Error moving parameter',
+    gettingTypesError: 'Getting parameter types list error',
+    creatingParameterSuccess: 'Parameter creation',
+    creatingParameterSuccessMessage: (name) => `Parameter ${name} is successfully created`,
+    optionUniqueError: 'Parameter option should be unique',
+    numericParameter: 'Make this a numeric parameter. Non-numeric values will not be allowed',
+    mandatoryParameter: 'Make this a mandatory parameter. Users will be required to enter a value',
+    previewTooltip: 'Preview layout',
+    previewMessage: 'Have a preview of how the created parameters would look in the app after deployment',
+    enterPlaceholder: 'Enter a default value',
+    selectPlaceholder: 'Select a default value',
+  },
+
+  customTheme: {
+    error: 'Custom theme error',
+    themeCreated: 'Custom theme is created successfully',
+    themeUpdated: 'Custom theme is updated successfully',
+    disableFooter: 'Remove the Enframe branding from the footer',
+    backgroundImgDescription: 'This image appears on the login page and home page of the app',
+    clientLogoImgDescription: 'The client logo appears on the login page and home page of the app',
+    clientIconDescription: 'The sidebar icon which acts as the link to go to the home page of the app',
+  },
+
+  appList: {
+    searchPlaceholder: 'Search by app name, user name or description',
+  },
+
+  notFoundPage: {
+    code: 'Error code: 404',
+    header: 'Sorry, the page you’re looking for isn’t here.',
+    text: `
+      The web address may be misspelled or we might have moved the page to a different place.
+      But rest assured, we can make sure you safely reach back home by clicking the button below.
+    `,
+    toHome: 'Return to home',
+    toPrevPage: 'Go to previous page',
+  },
+
+  setting: {
+    nameSymbols: 'Field cannot contain comma, quotes, double quotes or ampersand',
+    securityDomain: `
+      1. Characters should only be a-z | A-Z | 0-9 and period(.) and dash(-).\n
+      2. The domain name part should not start or end with dash (-) (e.g. -google-.com).\n
+      3. The domain name part should be between 1 and 63 characters long.\n
+      4. After the first dot there should be one or more characters.
+    `,
+    domainNameUniqueness: 'Domain name is already in use',
+    error: 'Enframe Settings error',
+    tableau: {
+      header: 'Tableau settings',
+      subheader: 'Tableau settings for Enframe',
+    },
+    powerbi: {
+      header: 'Powerbi settings',
+      subheader: 'PowerBI settings for Enframe',
+    },
+    security: {
+      header: 'Accepted domains',
+      subheader: 'Only the email addresses with the below listed domains will be granted access to login to enframe.',
+    },
+    userManagement: {
+      header: 'User List',
+      subheader: `The list of users who have access to login to ${appName}`,
+      searchPlaceholder: 'Search in the list',
+      addUserTitle: `Create new user for ${appName}`,
+      addUserConfirmText: 'Add user',
+      editUserTitle: 'Edit User',
+      editUserConfirmText: 'Edit User',
+      addUserCancelText: 'Cancel',
+      addUserFirstNameLabel: 'FIRST NAME',
+      addUserFirstNamePlaceholder: 'Ex. John',
+      addUserLastNameLabel: 'LAST NAME',
+      addUserLastNamePlaceholder: 'Ex. Smith',
+      addUserEmailLabel: 'USER MAIL',
+      addUserEmailPlaceholder: 'Ex. john.smith@opexanalytics.com',
+      addUserPasswordLabel: 'PASSWORD',
+      addUserPasswordPlaceholder: 'Min 8 Characters',
+      addUserConfirmPasswordLabel: 'CONFIRM PASSWORD',
+      addUserConfirmPasswordPlaceholder: 'Confirm password',
+      addUserRoleLabel: 'SELECT ROLE TYPE',
+      addUserRolePlaceholder: 'Select a role type',
+      invalidEmail: 'Invalid email',
+      passwordsDoNotMatch: 'Passwords should match',
+      alphanumericOnly: 'Alphanumeric only',
+      deleteUsersTitle: 'Delete User',
+      deleteUsersMessage: 'Are you sure you want to delete this user from the list?',
+      deleteUsersButtonName: 'Yes, delete',
+      deleteDialogTitle: 'Are you sure you want to delete the users?',
+      deleteDialogConfirmText: ' Yes, delete',
+      deleteDialogText: `Deleting will <b>permanently remove</b> the selected users from ${appName}. `
+        + 'You can always recreate the users in the future.',
+      lastLoginYetToSignIn: 'Last Login : Yet to sign in',
+    },
+
+    packageManager: {
+      header: 'Environments',
+      subheader: 'Create environments to run applications according to it’s needs',
+      infoText: 'No environments available. Please click on <br> "New Environment" to create one.',
+      createDialogTitle: 'New Environment',
+      updateDialogTitle: 'Update Environment',
+      createConfirmText: 'Create',
+      updateConfirmText: 'Update',
+      cancelText: 'Cancel',
+      createProgressText: 'Creating environment…',
+      updateProgressText: 'Updating environment…',
+      deleteEnv: (envName) => `Are you sure you want to delete the ${envName} environment?`,
+      errorCreatingEnv: 'Environment failed',
+      errorFetchingData: 'Error fetching environment data',
+      errorMsg: 'An error occurred. Please check the connection or the commands you’ve entered and try once again.',
+      errorMsgValidation: 'Please fill required fields',
+      errorNameMsg: 'Value must not contain the space character',
+      successCreatingTitle: 'Environment created',
+      successUpdatingTitle: 'Environment updated',
+      successCreatingMsg: (envName) => `"${envName}" has been successfully created.`,
+      successUpdatingMsg: (envName) => `"${envName}" has been successfully updated.`,
+    },
+  },
+};

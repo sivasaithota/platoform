@@ -1,0 +1,12 @@
+{
+  "environments": {
+    "localDockerRegistry": "LOCAL_DOCKER_REGISTRY_ADDRESS"
+  },
+  "database": {
+    "postgres": {
+      "username": "POSTGRES_USER",
+      "password": "POSTGRES_PASSWORD",
+      "dbname": "POSTGRES_DB"
+    }
+  }
+}
